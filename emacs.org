@@ -1,0 +1,71 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org-css.css" />
+* 简介emacs
+1. 神的编辑器
+2. 伪装成操作系统的编辑器
+* 什么是好的编辑器
+1. 全键盘
+2. 全屏
+3. 美观
+4. 易于修改
+5. 插件化，功能强大
+
+* 选择spacemacs
+1. 配置结构化
+2. 好看易修改
+* 介绍org-mode
+** 标题
+*** 标题
+=重点= ~重点~
+** 超连接
+[[http://www.baidu.com][baidu.com]]
+[[http://google.com][google]]
+** 列表
+1. first
+2. second
+3. third
+** 无序列表
+- first
+- second
+- third
+** 图片
+[[file:~/2016-07-07-155431_550x124_scrot.png]]
+** 源码
+#+BEGIN_SRC go
+  package main
+
+  import (
+    "fmt"
+  )
+
+  func main() {
+    fmt.Println("hello world")
+  }
+#+END_SRC
+** 表格
+| first | second | third |
+|-------+--------+-------|
+|     1 |      2 |     3 |
+|     4 |      4 |     6 |
+|-------+--------+-------|
+|     6 |      7 |     7 |
+|     9 |      0 |     4 |
+|-------+--------+-------|
+|   123 |    232 |   444 |
+
+** TODO todo 事项
+*** TODO Release 2.25 [1/2]
+DEADLINE: <2016-08-23 二>
+**** TODO bug#7777
+SCHEDULED: <2016-08-25 四> DEADLINE:<2016-08-26 五>
+**** DONE feature#8888
+CLOSED: [2016-08-24 三 19:25] DEADLINE:<2016-08-26 五>
+*** 开机启动agenda
+#+BEGIN_SRC emacs-lisp
+(org-agenda-list t)
+(delete-other-windows)
+#+END_SRC
+** org-capture
+** publish
+#+BEGIN_SRC emacs-lisp
+  (org-publish)
+#+END_SRC

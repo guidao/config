@@ -39,6 +39,17 @@
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "CANCELED(c)")))
 
+;;设置TODO状态颜色
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "red" :weight bold)
+              ("NEXT" :foreground "blue" :weight bold)
+              ("DONE" :foreground "forest green" :weight bold)
+              ("WAITING" :foreground "orange" :weight bold)
+              ("HOLD" :foreground "magenta" :weight bold)
+              ("CANCELLED" :foreground "forest green" :weight bold)
+              ("MEETING" :foreground "forest green" :weight bold)
+              ("PHONE" :foreground "forest green" :weight bold))))
+
 ;(set-variable 'ycmd-server-command '("python" "/usr/lib/ycmd/ycmd"))
 ;(add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
 ;(require 'golint)
@@ -66,3 +77,12 @@
           :author nil
           )
          ("org" :components ("org-notes"))))
+
+
+;; 不起作用??
+(setq org-export-with-timestamps nil)
+(setq org-export-with-date nil)
+
+;;设置日程管理目录
+(setq org-agenda-files '("~/org"))
+
