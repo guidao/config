@@ -51,15 +51,14 @@
               ("PHONE" :foreground "forest green" :weight bold))))
 
 ;(set-variable 'ycmd-server-command '("python" "/usr/lib/ycmd/ycmd"))
-(add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
-(require 'golint)
+;(add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
+;(require 'golint)
 
  ;开启自动打开org-agenda
 (org-agenda-list t)
 (delete-other-windows)
 
 (require 'ox-publish)
-
  ;去掉validation显示
 (setq org-html-validation-link nil)
 (setq org-html-link-home "index.html")
