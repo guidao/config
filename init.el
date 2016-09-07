@@ -86,3 +86,6 @@
 ;;设置日程管理目录
 (setq org-agenda-files '("~/org"))
 
+;;设置使用eww浏览网页
+(setq helm-dash-browser-func 'eww)
+
