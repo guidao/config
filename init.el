@@ -88,3 +88,5 @@
 (setq org-export-with-timestamps nil)
 (setq org-export-with-date nil)
 
+;;设置使用eww浏览网页
+(setq helm-dash-browser-func 'eww)
