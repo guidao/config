@@ -54,8 +54,13 @@
 ;(add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
 ;(require 'golint)
 
+
+;;设置日程管理目录
+(setq org-agenda-files '("~/org"))
+
+
  ;开启自动打开org-agenda
-(org-agenda-list t)
+(org-agenda-list)
 (delete-other-windows)
 
 (require 'ox-publish)
@@ -83,9 +88,5 @@
 (setq org-export-with-timestamps nil)
 (setq org-export-with-date nil)
 
-;;设置日程管理目录
-(setq org-agenda-files '("~/org"))
-
 ;;设置使用eww浏览网页
 (setq helm-dash-browser-func 'eww)
-
