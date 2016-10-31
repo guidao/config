@@ -103,5 +103,5 @@
 (spacemacs/set-leader-keys "yi" 'yas-insert-snippet)
 (spacemacs/set-leader-keys "yn" 'yas-new-snippet)
 
-
-
+;; 设置
+(define-key helm-find-files-map (kbd "DEL") 'helm-find-files-up-one-level)
