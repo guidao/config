@@ -68,6 +68,7 @@
 (setq org-html-validation-link nil)
 (setq org-html-link-home "index.html")
 (setq org-html-link-up "index.html")
+
 (setq org-publish-project-alist
       '(("org-notes"
           :base-directory "~/guidao.github.io/org/"
@@ -76,7 +77,7 @@
           :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/org-css.css\"/>"
           :recursive t
           :publishing-function org-html-publish-to-html
-          :headline-levels 4             ; Just the default for this project.
+          :headline-levels 4
           :auto-preamble t
           :timestamp nil
           :author nil
@@ -90,3 +91,17 @@
 
 ;;设置使用eww浏览网页
 (setq helm-dash-browser-func 'eww)
+
+
+;;设置tab为2个空格
+(setq go-tab-width 2)
+
+;;设置ruby mode
+(setq ruby-enable-enh-ruby-mode t)
+
+;;设置yasnippet新建，插入快捷键
+(spacemacs/set-leader-keys "yi" 'yas-insert-snippet)
+(spacemacs/set-leader-keys "yn" 'yas-new-snippet)
+
+
+
