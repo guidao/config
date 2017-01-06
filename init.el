@@ -1,25 +1,3 @@
-;; (defun gen-index-html (plist filename pub-dir)
-;;   "主要根据当前目录下的html文件产生index.html"
-;;   (let* ((temp-string (get-string-from-file (plist-get plist :temp-index-file)))
-;;          (dir-files (directory-files (plist-get plist :base-directory)))
-;;          (tp "<li><a href=\"%s\">%s</a></li>\n")
-;;          (content-string "")
-;;          )
-;;     (loop for file in dir-files do
-;;           (if (and (not (string-equal file "index.html")) (string-equal "html" (file-name-extension file))) 
-;;             (setq content-string (concat content-string
-;;                   (format tp file (file-name-base file))))))
-;;     (with-temp-file (concat (plist-get plist :base-directory) "index.html")
-;;       (insert
-;;        (replace-regexp-in-string "{content}" content-string temp-string)))))
-
-;; (defun get-string-from-file (filename)
-;;   "返回文件内容"
-;;   (with-temp-buffer
-;;     (insert-file-contents filename)
-;;     (buffer-string)))
-
-
 (defun fengche-comment (arg)
   "符合个人风格的注释行为"
   (interactive "*P")
@@ -70,9 +48,9 @@
 (setq org-html-link-up "index.html")
 (setq org-publish-project-alist
       '(("org-notes"
-          :base-directory "~/guidao.github.io/org/"
+          :base-directory "~/code/github/guidao.github.io/org/"
           :base-extension "org"
-          :publishing-directory "~/guidao.github.io/"
+          :publishing-directory "~/code/github/guidao.github.io/"
           :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/org-css.css\"/>"
           :recursive t
           :publishing-function org-html-publish-to-html
@@ -90,3 +68,34 @@
 
 ;;设置使用eww浏览网页
 (setq helm-dash-browser-func 'eww)
+
+;自动换行
+(toggle-truncate-lines 1)
+
+;;设置命令重复
+;; (spacemacs/set-leader-keys "." 'repeat)
+;; (define-key evil-motion-state-map "." 'repeat)
+
+;;复制shell中的环境变量
+(exec-path-from-shell-copy-env "GOROOT")
+
+;;设置go tab为2个空格
+(setq go-tab-width 2)
+
+;;启动开启行号
+(global-linum-mode)
+
+;;自动换行
+(toggle-truncate-lines)
+
+;;打开org显示图片
+(org-toggle-inline-images)
+
+;;org中能执行dot命令
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((dot . t)
+   (emacs-lisp . t)
+   (ruby . t)
+   ))
+
