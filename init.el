@@ -71,7 +71,7 @@
 (setq helm-dash-browser-func 'eww)
 
 ;自动换行
-(toggle-truncate-lines 1)
+;; (set-default 'truncate-lines t)
 
 ;;设置命令重复
 ;; (spacemacs/set-leader-keys "." 'repeat)
@@ -87,10 +87,10 @@
 (global-linum-mode)
 
 ;;自动换行
-(toggle-truncate-lines)
+(setq truncate-lines nil)
 
 ;;打开org显示图片
-(org-toggle-inline-images)
+(setq auto-image-file-mode t)
 
 ;;org中能执行dot命令
 (org-babel-do-load-languages
@@ -100,6 +100,8 @@
    (ruby . t)
    ))
 
+;;org-capture file
+(setq org-default-notes-file (concat org-directory "/notes.org"))
 
 
 ;;设置ruby mode
@@ -108,3 +110,17 @@
 ;;设置yasnippet新建，插入快捷键
 (spacemacs/set-leader-keys "yi" 'yas-insert-snippet)
 (spacemacs/set-leader-keys "yn" 'yas-new-snippet)
+
+;;rust保存时格式化
+(setq rust-format-on-save t)
+
+
+;;快捷键改变字体大小
+(global-set-key (kbd "M-[") 'text-scale-increase)
+(global-set-key (kbd "M-]") 'text-scale-decrease)
+
+;;设置图片宽度
+(setq org-image-actual-width '(300)) 
+
+(if (not (display-graphic-p)) (load-theme 'wheatgrass))
+
