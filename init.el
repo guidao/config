@@ -11,7 +11,7 @@
 (global-set-key "\M-;" 'fengche-comment)
 
 ;;定义goto char快捷键
-(spacemacs/set-leader-keys "g" 'evil-avy-goto-char)
+;; (spacemacs/set-leader-keys "g" 'evil-avy-goto-char)
 
 ;; 设置TODO状态序列
 (setq org-todo-keywords
@@ -98,11 +98,14 @@
  '((dot . t)
    (emacs-lisp . t)
    (ruby . t)
+   (plantuml . t)
    ))
 
 ;;org-capture file
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
+;;设置plantuml目录
+(setq org-plantuml-jar-path "~/code/java/plantuml/plantuml.jar")
 
 ;;设置ruby mode
 (setq ruby-enable-enh-ruby-mode t)
@@ -116,11 +119,75 @@
 
 
 ;;快捷键改变字体大小
-(global-set-key (kbd "M-[") 'text-scale-increase)
-(global-set-key (kbd "M-]") 'text-scale-decrease)
+;; (global-set-key (kbd "M-[") 'text-scale-increase)
+;; (global-set-key (kbd "M-]") 'text-scale-decrease)
 
 ;;设置图片宽度
 (setq org-image-actual-width '(300)) 
 
-(if (not (display-graphic-p)) (load-theme 'wheatgrass))
+;(if (not (display-graphic-p)) (load-theme 'wheatgrass))
+
+;禁止go-lint检查
+(setq-default flycheck-disabled-checkers '(go-golint))
+
+
+;全局开启多点触控(evil-mc)
+(global-evil-mc-mode 1)
+
+
+;; (setenv "PATH" (concat (getenv "PATH") ":your path"))
+
+
+
+;; copy from http://blog.binchen.org/posts/copypaste-in-emacs.html
+(setq *is-a-mac* (eq system-type 'darwin))
+(setq *cygwin* (eq system-type 'cygwin) )
+(setq *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)) )
+(defun copy-to-x-clipboard ()
+  (interactive)
+  (if (region-active-p)
+      (progn
+        (cond
+         ((and (display-graphic-p) x-select-enable-clipboard)
+          (x-set-selection 'CLIPBOARD (buffer-substring (region-beginning) (region-end))))
+         (t (shell-command-on-region (region-beginning) (region-end)
+                                     (cond
+                                      (*cygwin* "putclip")
+                                      (*is-a-mac* "pbcopy")
+                                      (*linux* "xsel -ib")))
+            ))
+        (message "Yanked region to clipboard!")
+        (deactivate-mark))
+        (message "No region active; can't yank to clipboard!")))
+
+(defun paste-from-x-clipboard()
+  (interactive)
+  (cond
+   ((and (display-graphic-p) x-select-enable-clipboard)
+    (insert (x-get-selection 'CLIPBOARD)))
+   (t (shell-command
+       (cond
+        (*cygwin* "getclip")
+        (*is-a-mac* "pbpaste")
+        (t "xsel -ob"))
+       1))
+   ))
+
+(copy-to-x-clipboard)
+
+(defun copy_test ()
+  (interactive)
+  (shell-command-on-region (region-beginning) (region-end) "echo")
+  (message "finish", (k))
+  )
+
+
+;;自定义截图
+
+
+
+
+
+
+
 
